@@ -65,3 +65,4 @@ couchbase_server_tmpdir: "/tmp"
 couchbase_server_tune_os: false
 couchbase_server_firewall: false
 couchbase_server_local_package: false
+couchbase_server_docker_os: false

@@ -43,6 +43,7 @@
   sudo: True
   template: src=etc_sysctl.d_couchbase-server.conf.j2 dest=/etc/sysctl.d/couchbase-server.conf owner=root group=root mode=0644
   notify: Update kernel settings
+  when: couchbase_server_docker_os != true
 
 - name: Disable THP
   sudo: True
@@ -51,3 +52,5 @@
   shell: for i in /sys/kernel/mm/*transparent_hugepage/enabled; do echo never > $i; done
   when: ansible_distribution_version != "12.04"
   notify: Source local settings
+  when: couchbase_server_docker_os != true
+  

@@ -4,9 +4,12 @@
 
 - name: Update kernel settings
   command: sysctl -e -p /etc/sysctl.d/couchbase-server.conf
+  when: couchbase_server_docker_os != true
 
 - name: Source local settings
   command: /bin/bash /etc/rc.local
+  when: couchbase_server_docker_os != true
 
 - name: Restart Couchbase Server
   service: name=couchbase-server state=restarted
+  when: couchbase_server_docker_os != true
